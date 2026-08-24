@@ -1,0 +1,51 @@
+[stack]
+name = "stinger-software"
+version = "26.08.1"
+
+[container]
+base = "ros:humble"
+package-manager = "apt"
+
+[container.optional-mounts]
+bot = [
+    { source="/dev", target="/dev" },
+    { source="/run/udev", target="/run/udev:ro" }
+]
+
+[system.apt]
+dependencies = [
+    # Core ROS 2 packages
+    "ros-humble-robot-localization",
+    "ros-humble-foxglove-bridge",
+    "ros-humble-xacro",
+    "ros-humble-cv-bridge",
+    "ros-humble-sensor-msgs-py",
+    "ros-humble-tf-transformations",
+    "ros-humble-ros-gz-sim",
+    "ros-humble-ros-gz-bridge",
+    
+    # Utilities & build tools
+    "python3-pip",
+    "python3-colcon-common-extensions",
+    "v4l-utils",
+    "i2c-tools",
+    "iputils-ping",
+    "tmux",
+    "nano",
+    "git"
+]
+
+[system.pip]
+break-system-packages = true
+dependencies = [
+    "pyserial",
+    "adafruit-circuitpython-icm20x",
+    "board",
+    "RPi.GPIO",
+    "numpy<2",
+    "transforms3d",
+    "pigpio"
+]
+
+[tool.colcon.dependencies]
+sllidar_ros2 = { git = "https://github.com/Slamtec/sllidar_ros2.git", version = "main" }
