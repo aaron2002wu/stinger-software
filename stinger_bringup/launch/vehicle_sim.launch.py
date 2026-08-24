@@ -40,7 +40,6 @@ def generate_launch_description():
     )
     ld.append(spawn_vehicle)
 
-    # TODO: Uncomment after completing section 4
     localization = launch.actions.IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution([
@@ -49,6 +48,7 @@ def generate_launch_description():
                 'localization.launch.py'
             ]),
         ),
+        launch_arguments = {'use_sim_time': 'true'}.items()
     )
     # Delay to allow sensors to populate
     delayed_localization = TimerAction(period=5.0, actions=[localization])

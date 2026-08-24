@@ -67,7 +67,7 @@ class CameraPublisher(Node):
 
             # Publish the image frame
             self.image_pub.publish(msg)
-            self.get_logger().info("Publishing image frame...")
+            self.get_logger().info("Camera streaming active at 30 FPS", throttle_duration_sec=5.0)
         else:
             self.get_logger().error("Failed to capture image.")
             
