@@ -9,8 +9,7 @@ pre-setup = [
     "touch /var/mail/ubuntu && chown ubuntu /var/mail/ubuntu && userdel -r ubuntu"
 ]
 
-[container.optional-mounts]
-bot = [
+mounts = [
     { source="/dev", target="/dev" },
     { source="/run/udev", target="/run/udev:ro" }
 ]
