@@ -11,7 +11,8 @@ pre-setup = [
 
 mounts = [
     { source="/dev", target="/dev" },
-    { source="/run/udev", target="/run/udev:ro" }
+    { source="/run/udev", target="/run/udev:ro" },
+    { source="$HOME/bags", target="/home/stinger-software/bags" }
 ]
 
 [system.apt]
